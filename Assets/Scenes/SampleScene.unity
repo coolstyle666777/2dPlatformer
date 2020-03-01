@@ -536,46 +536,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0515605903395e4f97d625c03da04d0, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &128367707
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 128367709}
-  - component: {fileID: 128367708}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &128367708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 128367707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37fe8c3c18021b945ab769da84d0d434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &128367709
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 128367707}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.74, y: -0.18000019, z: -10.034427}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &129341723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4911825102324788, guid: b0515605903395e4f97d625c03da04d0,
@@ -711,7 +671,7 @@ Transform:
   - {fileID: 831621719}
   - {fileID: 743337544}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &199230822
 Prefab:
@@ -881,7 +841,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4390432622811686, guid: 47a5a6b14454bec42886862fdccb8318, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a5a6b14454bec42886862fdccb8318, type: 2}
@@ -1068,7 +1028,7 @@ Transform:
   - {fileID: 1749189266}
   - {fileID: 1452979176}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &321033225 stripped
 Transform:
@@ -1202,7 +1162,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &414572425
 GameObject:
@@ -1284,7 +1244,7 @@ Transform:
   - {fileID: 1461851451}
   - {fileID: 644554593}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &424655463
 Prefab:
@@ -1780,7 +1740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &519420033
 AudioSource:
@@ -2469,7 +2429,7 @@ Transform:
   - {fileID: 1076233791}
   - {fileID: 2097282971}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &657024547
 GameObject:
@@ -13299,7 +13259,7 @@ Transform:
   - {fileID: 1899398905}
   - {fileID: 563499068}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &846258658 stripped
 Transform:
@@ -13700,7 +13660,7 @@ Transform:
   m_Children:
   - {fileID: 1004160991}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &910378500
 Prefab:
@@ -15725,7 +15685,7 @@ Transform:
   - {fileID: 1751367975}
   - {fileID: 1234710114}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1303384300
 Prefab:
@@ -15876,7 +15836,7 @@ Transform:
   - {fileID: 1073498895}
   - {fileID: 2100575403}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1328614542
 MonoBehaviour:
