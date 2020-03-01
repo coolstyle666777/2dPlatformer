@@ -10,12 +10,12 @@ public class Player : MonoBehaviour
     [Header("Events")]
     [Space]
     [SerializeField] private UnityEvent _onHitEvent;
-    [SerializeField] private UnityEvent _onCoinHitEvent;
-    private CharacterController _moveController;
+    [SerializeField] private UnityEvent _onCoinPickEvent;
+    private CharacterMover _moveController;
     private Animator _animationController;
     private Rigidbody2D _rigidbody2D;
     private CoinStash _coinStash;
-    private FadeAlfa _fadeAlfa;
+    private SpriteBlink _fadeAlfa;
     private float _horizontalMove;
     private bool _isJump;
     private bool _isInvincible;
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     public void OnCoinHit()
     {
-        _onCoinHitEvent.Invoke();
+        _onCoinPickEvent.Invoke();
     }
 
     public void TakeDamage()
@@ -56,10 +56,10 @@ public class Player : MonoBehaviour
     {
         if (_onHitEvent == null)
             _onHitEvent = new UnityEvent();
-        _moveController = GetComponent<CharacterController>();
+        _moveController = GetComponent<CharacterMover>();
         _animationController = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _fadeAlfa = GetComponent<FadeAlfa>();
+        _fadeAlfa = GetComponent<SpriteBlink>();
         _coinStash = GetComponent<CoinStash>(); 
     }
 

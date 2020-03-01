@@ -8,18 +8,23 @@ public class BackgroundRepeater : MonoBehaviour {
     private float _lenght;
     private float _startPosition;
     
-	private void Start () {
+	private void Start ()
+    {
         _startPosition = transform.position.x;
         _lenght = GetComponent<SpriteRenderer>().bounds.size.x;
 	}
 
     private void FixedUpdate()
-    {       
-        float distance = 0;
+    {              
         float temp = _camera.transform.position.x;
-        transform.position = new Vector3(_startPosition + distance, transform.position.y);
-
-        if (temp > _startPosition + _lenght) _startPosition += _lenght;
-        else if (temp < _startPosition - _lenght) _startPosition -= _lenght;
+        transform.position = new Vector3(_startPosition, transform.position.y);
+        if (temp > _startPosition + _lenght)
+        {
+            _startPosition += _lenght;
+        }
+        else if (temp < _startPosition - _lenght)
+        {
+            _startPosition -= _lenght;
+        }
     }
 }

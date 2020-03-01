@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
-    private FadeAlfa _fadeAlfa;
+    private SpriteBlink _fadeAlfa;
 
     private void Awake()
     {
-        _fadeAlfa = GetComponent<FadeAlfa>();
+        _fadeAlfa = GetComponent<SpriteBlink>();
     }
 
     public void OnTriggerStay2D(Collider2D collision)

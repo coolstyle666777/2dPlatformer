@@ -2,29 +2,29 @@
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))] 
-public class CharacterController : MonoBehaviour
+public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 400f;
     [SerializeField] private float _moveSpeed = 10f;
     [Range(0, .3f)] [SerializeField] private float _movementSmoothing = .05f;
     [SerializeField] private LayerMask _whatIsGround;
-    [SerializeField] private Transform _groundCheck;
-    [Header("Events")]
-    [Space]
-    [SerializeField] private UnityEvent OnLandEvent;
-
+    [SerializeField] private Transform _groundCheck;   
     private const float _groundedRadius = .2f;
     private bool _isGrounded;
     private Rigidbody2D _rigidbody2D;
     private bool _facingRight = true;
     private Vector3 _velocity = Vector3.zero;
-    
+    [Header("Events")]
+    [Space]
+    [SerializeField] private UnityEvent OnLandEvent;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-
         if (OnLandEvent == null)
+        {
             OnLandEvent = new UnityEvent();
+        }
     }
 
     private void FixedUpdate()
@@ -39,7 +39,9 @@ public class CharacterController : MonoBehaviour
             {
                 _isGrounded = true;
                 if (!wasGrounded)
+                {
                     OnLandEvent.Invoke();
+                }
             }
         }
     }
@@ -53,7 +55,6 @@ public class CharacterController : MonoBehaviour
         {
             Flip();
         }        
-
         if (_isGrounded && jump)
         {
             Jump();

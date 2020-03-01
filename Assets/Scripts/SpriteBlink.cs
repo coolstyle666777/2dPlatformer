@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FadeAlfa : MonoBehaviour {
+public class SpriteBlink : MonoBehaviour {
 
     [SerializeField] private float _fadeRate;
     private SpriteRenderer _sprite;
@@ -16,8 +16,6 @@ public class FadeAlfa : MonoBehaviour {
         enabled = false;
     }
 
-
-
     private void FixedUpdate()
     {       
         color.a = Mathf.MoveTowards(color.a, alpha, Time.fixedDeltaTime + _fadeRate);
@@ -30,7 +28,9 @@ public class FadeAlfa : MonoBehaviour {
                 alpha = 0.0f;
             }
             else
+            {
                 alpha = 1.0f;
+            }
         }
     }
 

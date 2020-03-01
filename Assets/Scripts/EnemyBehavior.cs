@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Mace : MonoBehaviour {
+public class EnemyBehavior : MonoBehaviour {
 
     [SerializeField] private Transform _wayPoint;
     [SerializeField] private float _pathTime;   
