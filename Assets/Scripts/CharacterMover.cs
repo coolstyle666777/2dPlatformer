@@ -28,20 +28,15 @@ public class CharacterMover : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        bool wasGrounded = _isGrounded;
+    {        
         _isGrounded = false;
-
         Collider2D[] colliders = Physics2D.OverlapCircleAll(_groundCheck.position, _groundedRadius, _whatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
             {
                 _isGrounded = true;
-                if (!wasGrounded)
-                {
-                    OnLandEvent.Invoke();
-                }
+                OnLandEvent.Invoke();
             }
         }
     }
@@ -69,7 +64,7 @@ public class CharacterMover : MonoBehaviour
     private void Jump()
     {
         _isGrounded = false;
-        transform.Translate(Vector2.up * 0.1f); //магическое число чтобы не срабатывал OnLandEvent на старте прыжка
+        transform.Translate(Vector2.up * 0.1f); 
         _rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
     }
 
@@ -79,6 +74,5 @@ public class CharacterMover : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-    }
-   
+    }  
 }

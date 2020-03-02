@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Coin : MonoBehaviour {
-
-    private SpriteBlink _fadeAlfa;
+public class Coin : MonoBehaviour
+{
+    private SpriteBlink _spriteBlink;
 
     private void Awake()
     {
-        _fadeAlfa = GetComponent<SpriteBlink>();
+        _spriteBlink = GetComponent<SpriteBlink>();
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -30,7 +30,7 @@ public class Coin : MonoBehaviour {
     private IEnumerator Destroy(float timeToDestroy)
     {
         WaitForSeconds waitTime = new WaitForSeconds(timeToDestroy);
-        _fadeAlfa.enabled = true;
+        _spriteBlink.enabled = true;
         yield return waitTime;
         Destroy(gameObject);
     }

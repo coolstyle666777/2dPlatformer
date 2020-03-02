@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundRepeater : MonoBehaviour {
-
+public class BackgroundRepeater : MonoBehaviour
+{
     [SerializeField] private GameObject _camera;
+    [SerializeField] private SpriteRenderer _sprite;
     private float _lenght;
     private float _startPosition;
     
 	private void Start ()
     {
+        _sprite = GetComponent<SpriteRenderer>();
         _startPosition = transform.position.x;
-        _lenght = GetComponent<SpriteRenderer>().bounds.size.x;
+        _lenght = _sprite.bounds.size.x;
 	}
 
     private void FixedUpdate()

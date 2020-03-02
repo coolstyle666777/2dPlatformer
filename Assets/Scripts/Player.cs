@@ -9,13 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float _invincibleTime = 3f;
     [Header("Events")]
     [Space]
-    [SerializeField] private UnityEvent _onHitEvent;
-    [SerializeField] private UnityEvent _onCoinPickEvent;
-    private CharacterMover _moveController;
-    private Animator _animationController;
+    [SerializeField] private UnityEvent _hitted;
+    [SerializeField] private UnityEvent _coinPicked;
+    private CharacterMover _CharacterMover;
+    private Animator _playerAnimator;
     private Rigidbody2D _rigidbody2D;
     private CoinStash _coinStash;
-    private SpriteBlink _fadeAlfa;
+    private SpriteBlink _spriteBlink;
     private float _horizontalMove;
     private bool _isJump;
     private bool _isInvincible;
@@ -25,13 +25,13 @@ public class Player : MonoBehaviour
    
     public void OnLand()
     {
-        _animationController.SetBool("Grounded", true);
+        _playerAnimator.SetBool("Grounded", true);
         _canMove = true;
     }
 
     public void OnCoinHit()
     {
-        _onCoinPickEvent.Invoke();
+        _coinPicked.Invoke();
     }
 
     public void TakeDamage()
@@ -42,24 +42,26 @@ public class Player : MonoBehaviour
             {
                 SceneManager.LoadScene(0);
             }
-            _moveController.RemoveVelocity();
+            _CharacterMover.RemoveVelocity();
             _rigidbody2D.AddForce(new Vector2(-_horizontalMove * _damageForce, _damageForce));
             _coinStash.DropCoins(CoinStash.Count.Half);           
             _isInvincible = true;
             StartCoroutine(Invincible());
             _canMove = false;
-            _onHitEvent.Invoke();
+            _hitted.Invoke();
         }
     }
 
     private void Awake()
     {
-        if (_onHitEvent == null)
-            _onHitEvent = new UnityEvent();
-        _moveController = GetComponent<CharacterMover>();
-        _animationController = GetComponent<Animator>();
+        if (_hitted == null)
+        {
+            _hitted = new UnityEvent();
+        }
+        _CharacterMover = GetComponent<CharacterMover>();
+        _playerAnimator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _fadeAlfa = GetComponent<SpriteBlink>();
+        _spriteBlink = GetComponent<SpriteBlink>();
         _coinStash = GetComponent<CoinStash>(); 
     }
 
@@ -77,10 +79,10 @@ public class Player : MonoBehaviour
     {
         if (_horizontalMove != 0)
         {
-            _animationController.SetBool("Running", true);
+            _playerAnimator.SetBool("Running", true);
         } else
         {
-            _animationController.SetBool("Running", false);
+            _playerAnimator.SetBool("Running", false);
         }
     }
 
@@ -91,7 +93,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             _isJump = true;
-            _animationController.SetBool("Grounded", false);
+            _playerAnimator.SetBool("Grounded", false);
         }
     }
 
@@ -99,7 +101,7 @@ public class Player : MonoBehaviour
     {
         if (_canMove)
         {
-            _moveController.Move(_horizontalMove, _isJump);
+            _CharacterMover.Move(_horizontalMove, _isJump);
             _isJump = false;
             SetAnimationMove();
         }
@@ -108,9 +110,9 @@ public class Player : MonoBehaviour
     private IEnumerator Invincible()
     {
         WaitForSeconds waitTime = new WaitForSeconds(_invincibleTime);
-        _fadeAlfa.enabled = true;
+        _spriteBlink.enabled = true;
         yield return waitTime;
         _isInvincible = false;
-        _fadeAlfa.enabled = false;       
+        _spriteBlink.enabled = false;       
     }   
 }

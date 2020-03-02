@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteBlink : MonoBehaviour {
-
+public class SpriteBlink : MonoBehaviour
+{
     [SerializeField] private float _fadeRate;
     private SpriteRenderer _sprite;
     private float alpha = 1.0f;

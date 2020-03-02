@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class CoinStash : MonoBehaviour {
-
+public class CoinStash : MonoBehaviour
+{
     [SerializeField] private Coin _coin;
     [SerializeField] private float _coinDropHeight;
     [SerializeField] private float _coinDropForce;

@@ -421,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageForce: 400
   _invincibleTime: 3
-  _onHitEvent:
+  _hitted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82206175066410126}
@@ -437,7 +437,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _onCoinPickEvent:
+  _coinPicked:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82126245339370652}

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour {
-
+public class EnemyBehavior : MonoBehaviour
+{
     [SerializeField] private Transform _wayPoint;
     [SerializeField] private float _pathTime;   
     private Vector3 _startPosition;

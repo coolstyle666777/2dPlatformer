@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class Chest : MonoBehaviour {
-
+public class Chest : MonoBehaviour
+{
     [SerializeField] private float _animationSpeed;
     private Animator _chestAnimator;
 
