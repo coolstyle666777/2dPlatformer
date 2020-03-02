@@ -15850,6 +15850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420028}
+  _sprite: {fileID: 0}
 --- !u!4 &1333544568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4911825102324788, guid: b0515605903395e4f97d625c03da04d0,
@@ -16760,7 +16761,7 @@ Tilemap:
       - {fileID: 21300000, guid: c01dc02e8d7e6254cb8304992de6e61e, type: 3}
       - {fileID: 21300000, guid: c8b43ee6c67a0b2439efe167ec7cdfb2, type: 3}
       - {fileID: 21300000, guid: e415f3348b2780f448f4723ff7912f78, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: -3, z: 0}
@@ -17121,7 +17122,7 @@ Tilemap:
       - {fileID: 21300000, guid: c01dc02e8d7e6254cb8304992de6e61e, type: 3}
       - {fileID: 21300000, guid: c8b43ee6c67a0b2439efe167ec7cdfb2, type: 3}
       - {fileID: 21300000, guid: e415f3348b2780f448f4723ff7912f78, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 48, y: -3, z: 0}

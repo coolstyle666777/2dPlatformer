@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour
         if (player != null && !player.IsInvincible)
         {
             coinStash.AddCoin();
-            player.OnCoinHit();
+            player.OnCoinPick();
             Destroy(gameObject);
         }       
     }

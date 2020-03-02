@@ -18,13 +18,13 @@ public class BackgroundRepeater : MonoBehaviour
 
     private void FixedUpdate()
     {              
-        float temp = _camera.transform.position.x;
+        float cameraPositionX = _camera.transform.position.x;
         transform.position = new Vector3(_startPosition, transform.position.y);
-        if (temp > _startPosition + _lenght)
+        if (cameraPositionX > _startPosition + _lenght)
         {
             _startPosition += _lenght;
         }
-        else if (temp < _startPosition - _lenght)
+        else if (cameraPositionX < _startPosition - _lenght)
         {
             _startPosition -= _lenght;
         }

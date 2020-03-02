@@ -16,14 +16,14 @@ public class CharacterMover : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
     [Header("Events")]
     [Space]
-    [SerializeField] private UnityEvent OnLandEvent;
+    [SerializeField] private UnityEvent _landed;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        if (OnLandEvent == null)
+        if (_landed == null)
         {
-            OnLandEvent = new UnityEvent();
+            _landed = new UnityEvent();
         }
     }
 
@@ -36,7 +36,7 @@ public class CharacterMover : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 _isGrounded = true;
-                OnLandEvent.Invoke();
+                _landed.Invoke();
             }
         }
     }
@@ -45,7 +45,6 @@ public class CharacterMover : MonoBehaviour
     {
         Vector3 targetVelocity = new Vector2(move * _moveSpeed, _rigidbody2D.velocity.y);
         _rigidbody2D.velocity = Vector3.SmoothDamp(_rigidbody2D.velocity, targetVelocity, ref _velocity, _movementSmoothing);
-
         if ((move > 0 && !_facingRight) || (move < 0 && _facingRight))
         {
             Flip();

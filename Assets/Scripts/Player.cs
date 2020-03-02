@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [Space]
     [SerializeField] private UnityEvent _hitted;
     [SerializeField] private UnityEvent _coinPicked;
+
     private CharacterMover _CharacterMover;
     private Animator _playerAnimator;
     private Rigidbody2D _rigidbody2D;
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
         _canMove = true;
     }
 
-    public void OnCoinHit()
+    public void OnCoinPick()
     {
         _coinPicked.Invoke();
     }
@@ -89,7 +90,6 @@ public class Player : MonoBehaviour
     private void CheckInputs()
     {
         _horizontalMove = Input.GetAxis("Horizontal");
-
         if (Input.GetButtonDown("Jump"))
         {
             _isJump = true;
