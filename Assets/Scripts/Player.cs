@@ -6,12 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _damageForce = 400f;
-    [SerializeField] private float _invincibleTime = 3f;
-    [Header("Events")]
-    [Space]
-    [SerializeField] private UnityEvent _hitted;
-    [SerializeField] private UnityEvent _coinPicked;
-
+    [SerializeField] private float _invincibleTime = 3f;   
     private CharacterMover _CharacterMover;
     private Animator _playerAnimator;
     private Rigidbody2D _rigidbody2D;
@@ -23,7 +18,9 @@ public class Player : MonoBehaviour
     private bool _canMove;
 
     public bool IsInvincible => _isInvincible;
-   
+    public UnityEvent Hitted;
+    public UnityEvent CoinPicked;
+
     public void OnLand()
     {
         _playerAnimator.SetBool("Grounded", true);
@@ -32,7 +29,7 @@ public class Player : MonoBehaviour
 
     public void OnCoinPick()
     {
-        _coinPicked.Invoke();
+        CoinPicked.Invoke();
     }
 
     public void TakeDamage()
@@ -49,15 +46,15 @@ public class Player : MonoBehaviour
             _isInvincible = true;
             StartCoroutine(Invincible());
             _canMove = false;
-            _hitted.Invoke();
+            Hitted.Invoke();
         }
     }
 
     private void Awake()
     {
-        if (_hitted == null)
+        if (Hitted == null)
         {
-            _hitted = new UnityEvent();
+            Hitted = new UnityEvent();
         }
         _CharacterMover = GetComponent<CharacterMover>();
         _playerAnimator = GetComponent<Animator>();

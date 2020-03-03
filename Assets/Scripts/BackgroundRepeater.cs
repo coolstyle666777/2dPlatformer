@@ -8,13 +8,13 @@ public class BackgroundRepeater : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
     private float _lenght;
     private float _startPosition;
-    
-	private void Start ()
+
+    private void Start()
     {
         _sprite = GetComponent<SpriteRenderer>();
         _startPosition = transform.position.x;
         _lenght = _sprite.bounds.size.x;
-	}
+    }
 
     private void FixedUpdate()
     {              

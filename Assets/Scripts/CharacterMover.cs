@@ -16,14 +16,14 @@ public class CharacterMover : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
     [Header("Events")]
     [Space]
-    [SerializeField] private UnityEvent _landed;
+    public UnityEvent Landed;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        if (_landed == null)
+        if (Landed == null)
         {
-            _landed = new UnityEvent();
+            Landed = new UnityEvent();
         }
     }
 
@@ -36,7 +36,7 @@ public class CharacterMover : MonoBehaviour
             if (colliders[i].gameObject != gameObject)
             {
                 _isGrounded = true;
-                _landed.Invoke();
+                Landed.Invoke();
             }
         }
     }
