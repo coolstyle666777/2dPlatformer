@@ -421,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageForce: 400
   _invincibleTime: 3
-  _hitted:
+  Hitted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82206175066410126}
@@ -437,7 +437,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _coinPicked:
+  CoinPicked:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82126245339370652}
@@ -471,7 +471,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _groundCheck: {fileID: 4681975976340738}
-  OnLandEvent:
+  Landed:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114296233533037322}
@@ -515,7 +515,7 @@ MonoBehaviour:
   _coinDropForce: 300
   _coinDropAngleRange: 1
   _coinDropRange: 1
-  _fadeAliveTime: 6
+  _blinkAliveTime: 5
   _amount: 0
 --- !u!212 &212531022846491294
 SpriteRenderer:

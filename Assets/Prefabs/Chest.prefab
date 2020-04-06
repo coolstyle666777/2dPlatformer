@@ -124,7 +124,7 @@ MonoBehaviour:
   _coinDropForce: 300
   _coinDropAngleRange: 1
   _coinDropRange: 1
-  _fadeAliveTime: 10
+  _blinkAliveTime: 3
   _amount: 10
 --- !u!114 &114760602010474680
 MonoBehaviour:

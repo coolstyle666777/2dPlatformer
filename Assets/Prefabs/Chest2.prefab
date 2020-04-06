@@ -136,7 +136,7 @@ MonoBehaviour:
   _coinDropForce: 300
   _coinDropAngleRange: 1
   _coinDropRange: 1
-  _fadeAliveTime: 10
+  _blinkAliveTime: 3
   _amount: 20
 --- !u!212 &212416937342901010
 SpriteRenderer:

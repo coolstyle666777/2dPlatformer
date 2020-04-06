@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         {
             if (_coinStash.Amount == 0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
             _CharacterMover.RemoveVelocity();
             _rigidbody2D.AddForce(new Vector2(-_horizontalMove * _damageForce, _damageForce));
