@@ -28,14 +28,14 @@ public class CoinStash : MonoBehaviour
     {
         if (count == Count.Half)
         {
-            if (_amount != 1)
+            if (_amount != 0)
             {
                 _amount /= 2;
-            }            
-        }        
+            }
+        }
         for (int i = 0; i < _amount; i++)
-        {            
-            float angleStep = _coinDropAngleRange * Mathf.PI * i / _amount;           
+        {
+            float angleStep = _coinDropAngleRange * Mathf.PI * i / _amount;
             _dropPosition = new Vector3(Mathf.Cos(angleStep), Mathf.Sin(angleStep) + _coinDropHeight, 0) * _coinDropRange;
             var tempCoin = Instantiate(_coin, transform.position + _dropPosition, Quaternion.identity);
             tempCoin.FadeDestroy(_blinkAliveTime);

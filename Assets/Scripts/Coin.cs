@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
             coinStash.AddCoin();
             player.OnCoinPick();
             Destroy(gameObject);
-        }       
+        }
     }
 
     public void FadeDestroy(float timeToDestroy)

@@ -3,7 +3,7 @@
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] private Transform _wayPoint;
-    [SerializeField] private float _pathTime;   
+    [SerializeField] private float _pathTime;
     private Vector3 _startPosition;
     private Vector3 _endPosition;
     private float _runningTime;
@@ -11,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Start()
     {
         _startPosition = transform.position;
-        _endPosition = _wayPoint.position;       
+        _endPosition = _wayPoint.position;
     }
 
     private void Update()
@@ -35,24 +35,5 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 temp = _startPosition;
         _startPosition = _endPosition;
         _endPosition = temp;
-    }   
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        CheckPlayer(collision);
-    }
-
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        CheckPlayer(collision);
-    }
-
-    private void CheckPlayer(Collider2D collision)
-    {
-        var player = collision.gameObject.GetComponent<Player>();
-        if (player != null)
-        {
-            player.TakeDamage();
-        }
     }
 }

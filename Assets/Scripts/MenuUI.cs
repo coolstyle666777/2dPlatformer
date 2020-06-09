@@ -9,7 +9,7 @@ public class MenuUI : MonoBehaviour
 
     public void OnStartButtonClick()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void OnExitButtonClick()

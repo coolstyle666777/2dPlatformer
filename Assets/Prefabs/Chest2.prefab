@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61930118685147248}
   - component: {fileID: 114468079235468702}
   - component: {fileID: 114042372090692726}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Chest2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   _coinDropAngleRange: 1
   _coinDropRange: 1
   _blinkAliveTime: 3
-  _amount: 20
+  _amount: 10
 --- !u!212 &212416937342901010
 SpriteRenderer:
   m_ObjectHideFlags: 1

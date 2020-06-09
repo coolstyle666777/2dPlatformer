@@ -18,5 +18,5 @@ public class Chest : MonoBehaviour
         {
             _chestAnimator.SetFloat("Speed", _animationSpeed);
         }
-    }   
+    }
 }

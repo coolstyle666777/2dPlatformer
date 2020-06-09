@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Rigidbody2D))] 
+[RequireComponent(typeof(Rigidbody2D))]
 public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 400f;
     [SerializeField] private float _moveSpeed = 10f;
-    [Range(0, .3f)] [SerializeField] private float _movementSmoothing = .05f;
+    [Range(0, 1f)] [SerializeField] private float _movementSmoothing = .05f;
     [SerializeField] private LayerMask _whatIsGround;
-    [SerializeField] private Transform _groundCheck;   
+    [SerializeField] private Transform _groundCheck;
     private const float _groundedRadius = .2f;
     private bool _isGrounded;
     private Rigidbody2D _rigidbody2D;
     private bool _facingRight = true;
     private Vector3 _velocity = Vector3.zero;
+
+    public bool IsGrounded => _isGrounded;
+    public Rigidbody2D Rigidbody2D => _rigidbody2D;
+    public bool FacingRight => _facingRight;
     [Header("Events")]
     [Space]
     public UnityEvent Landed;
@@ -28,7 +32,7 @@ public class CharacterMover : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {        
+    {
         _isGrounded = false;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(_groundCheck.position, _groundedRadius, _whatIsGround);
         for (int i = 0; i < colliders.Length; i++)
@@ -48,8 +52,8 @@ public class CharacterMover : MonoBehaviour
         if ((move > 0 && !_facingRight) || (move < 0 && _facingRight))
         {
             Flip();
-        }        
-        if (_isGrounded && jump)
+        }
+        if (_isGrounded && jump && _rigidbody2D.velocity.y <= 0)
         {
             Jump();
         }
@@ -63,7 +67,7 @@ public class CharacterMover : MonoBehaviour
     private void Jump()
     {
         _isGrounded = false;
-        transform.Translate(Vector2.up * 0.1f); 
+        transform.Translate(Vector2.up * 0.1f);
         _rigidbody2D.AddForce(new Vector2(0f, _jumpForce));
     }
 
@@ -73,5 +77,5 @@ public class CharacterMover : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-    }  
+    }
 }
