@@ -134,6 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4906639693067456}
+  - component: {fileID: 114097217779535688}
   m_Layer: 8
   m_Name: PlayerSounds
   m_TagString: Untagged
@@ -827,6 +828,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114097217779535688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1446764257190240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0ff725ecba4654084c50b3f0fb88b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114420968990805234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -872,6 +884,7 @@ MonoBehaviour:
   _invincibleTime: 3
   _deathParticle: {fileID: 198447461728457400}
   _runParticle: {fileID: 198399511714453728}
+  _canMove: 0
   Hitted:
     m_PersistentCalls:
       m_Calls:

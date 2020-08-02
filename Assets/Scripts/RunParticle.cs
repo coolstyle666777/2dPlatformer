@@ -34,15 +34,16 @@ public class RunParticle : MonoBehaviour
 
     private void SpeedControl()
     {
-        if(Mathf.Abs(_characterMover.Rigidbody2D.velocity.x) + Mathf.Abs(_characterMover.Rigidbody2D.velocity.y) > _enableSpeed)
+        if (Mathf.Abs(_characterMover.Rigidbody2D.velocity.x) + Mathf.Abs(_characterMover.Rigidbody2D.velocity.y) > _enableSpeed)
         {
             if (!_particleSystem.isPlaying)
             {
                 _particleSystem.Play();
-            }       
-        } else
+            }
+        }
+        else
         {
-            _particleSystem.Stop(); 
-        }           
+            _particleSystem.Stop();
+        }
     }
 }

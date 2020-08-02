@@ -8,7 +8,7 @@ public class CoinText : MonoBehaviour
     private TextMeshProUGUI _coinText;
     private Player _player;
 
-    public void Start()
+    public void Awake()
     {
         _player = FindObjectOfType<Player>();
         _coinText = GetComponent<TextMeshProUGUI>();

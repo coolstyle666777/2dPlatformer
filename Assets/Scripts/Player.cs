@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _invincibleTime = 3f;
     [SerializeField] private ParticleSystem _deathParticle;
     [SerializeField] private ParticleSystem _runParticle;
+    [SerializeField] private bool _canMove;
     private CharacterMover _CharacterMover;
     private Animator _playerAnimator;
     private Rigidbody2D _rigidbody2D;
@@ -17,11 +18,10 @@ public class Player : MonoBehaviour
     private float _horizontalMove;
     private bool _isJump;
     private bool _isInvincible;
-    private bool _canMove;
     private Timer _timer;
     private FinishFlag _finishFlag;
-    private LevelLoader _levelLoader;
     private SpriteRenderer _spriteRenderer;
+    private LevelLoader _levelLoader;
 
     public bool IsInvincible => _isInvincible;
 
@@ -49,6 +49,11 @@ public class Player : MonoBehaviour
         _levelLoader = FindObjectOfType<LevelLoader>();
     }
 
+    private void Start()
+    {
+        _playerAnimator.SetBool("Grounded", true);
+    }
+
     public void OnEnable()
     {
         if (_timer != null)
@@ -64,13 +69,15 @@ public class Player : MonoBehaviour
         if (_finishFlag != null)
             _finishFlag.LevelComplete += OnLevelComplete;
     }
+
     public void OnLand()
     {
         _playerAnimator.SetBool("Grounded", true);
-        _canMove = true;
+        if (_isInvincible)
+        {
+            _canMove = true;
+        }
     }
-
-
 
     public void OnCoinPick()
     {
@@ -93,6 +100,11 @@ public class Player : MonoBehaviour
             _canMove = false;
             Hitted.Invoke();
         }
+    }
+
+    public void GoingRight()
+    {
+        _horizontalMove = 1;
     }
 
     private void Update()
@@ -129,20 +141,20 @@ public class Player : MonoBehaviour
 
     private void CheckInputs()
     {
-        _horizontalMove = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump"))
+        if (_canMove)
         {
-            _isJump = true;
+            _horizontalMove = Input.GetAxis("Horizontal");
+            if (Input.GetButtonDown("Jump"))
+            {
+                _isJump = true;
+            }
         }
     }
 
     private void MoveAction()
     {
-        if (_canMove)
-        {
-            _CharacterMover.Move(_horizontalMove, _isJump);
-            _isJump = false;          
-        }
+        _CharacterMover.Move(_horizontalMove, _isJump);
+        _isJump = false;
     }
 
     private void OnDied()
@@ -150,7 +162,7 @@ public class Player : MonoBehaviour
         _deathParticle.Play();
         _runParticle.Stop();
         _spriteRenderer.enabled = false;
-        _levelLoader.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        _levelLoader.RestartLevel();
     }
 
     private void OnLevelComplete()
@@ -165,5 +177,6 @@ public class Player : MonoBehaviour
         yield return waitTime;
         _isInvincible = false;
         _spriteBlink.enabled = false;
+        _canMove = true;
     }
 }

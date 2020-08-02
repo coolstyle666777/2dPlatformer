@@ -5,13 +5,17 @@ using UnityEngine;
 public class BackgroundRepeater : MonoBehaviour
 {
     [SerializeField] private GameObject _camera;
-    [SerializeField] private SpriteRenderer _sprite;
+    private SpriteRenderer _sprite;
     private float _lenght;
     private float _startPosition;
 
-    private void Start()
+    private void Awake()
     {
         _sprite = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
         _startPosition = transform.position.x;
         _lenght = _sprite.bounds.size.x;
     }

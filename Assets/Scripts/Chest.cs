@@ -8,6 +8,10 @@ public class Chest : MonoBehaviour
     private void Awake()
     {
         _chestAnimator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
         _chestAnimator.SetFloat("Speed", 0);
     }
 

@@ -14,10 +14,9 @@ public class FinishPanel : MonoBehaviour
     private LevelLoader _levelLoader;
     private Timer _timer;
     
-
     public void Awake()
     {
-        _nextLevel = FindObjectOfType<FinishFlag>().NextLevel + 1;
+        _nextLevel = FindObjectOfType<FinishFlag>().NextLevel;
         _canvasGroup = GetComponent<CanvasGroup>();
         _finishFlag = FindObjectOfType<FinishFlag>();
         _menuPanel = FindObjectOfType<MenuPanel>();
@@ -42,12 +41,12 @@ public class FinishPanel : MonoBehaviour
 
     public void OnNextLevelButtonClick()
     {
-        _levelLoader.LoadLevel(_nextLevel);
+        _levelLoader.LoadLevel(_nextLevel+2);
     }
 
     public void OnLevelRestartButtonClick()
     {
-        _levelLoader.LoadLevel(--_nextLevel);
+        _levelLoader.LoadLevel(++_nextLevel);
     }
 
     public void OpenPanel()
@@ -55,6 +54,7 @@ public class FinishPanel : MonoBehaviour
         _hiscoreText.text = _timer.CurrentTime.ToString("0.00");
         _canvasGroup.alpha = 1;
         _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.interactable = true;
         _menuPanel.BlockPanel = true;
     }
 }

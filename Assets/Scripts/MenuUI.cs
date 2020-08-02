@@ -5,27 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup _authorGroup;
+    private LevelLoader _levelLoader;
+    private Player _player;
+
+    private void Awake()
+    {
+        _levelLoader = FindObjectOfType<LevelLoader>();
+        _player = FindObjectOfType<Player>();
+        GameDataWriter.LoadGameData();
+    }
 
     public void OnStartButtonClick()
     {
-        SceneManager.LoadScene(1);
+        if (GameDataWriter.GameData.LevelUnlock[1])
+        {
+            _levelLoader.LoadLevel(1);
+        } else
+        {
+            _levelLoader.LoadLevel(2);
+        }
+        _levelLoader.GetComponentInChildren<Animator>().SetFloat("speed", 0.2f);
+        _player.GoingRight();
     }
 
     public void OnExitButtonClick()
     {
         Application.Quit();
-    }
-
-    public void OnAuthorButtonClick()
-    {
-        _authorGroup.alpha = 1;
-        _authorGroup.blocksRaycasts = true;
-    }
-
-    public void OnAuthorCloseButtonClick()
-    {
-        _authorGroup.alpha = 0;
-        _authorGroup.blocksRaycasts = false;
     }
 }

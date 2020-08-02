@@ -7,10 +7,29 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private float _transitionTime;
     private Animator _animator;
+    private Timer _timer;
 
     public void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
+        _timer = FindObjectOfType<Timer>();
+    }
+
+    public void OnEnable()
+    {
+        if (_timer != null)
+            _timer.TimesOver += RestartLevel;
+    }
+
+    public void OnDisable()
+    {
+        if (_timer != null)
+            _timer.TimesOver -= RestartLevel;
+    }
+
+    public void RestartLevel()
+    {
+        LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadLevel(int index)
