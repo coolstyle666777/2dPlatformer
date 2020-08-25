@@ -1,32 +1,50 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(CharacterMover), typeof(PlayerAnimation), typeof(PlayerInvincible))]
+[RequireComponent(typeof(CoinStash))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _damageForce = 400f;
-    [SerializeField] private float _invincibleTime = 3f;
-    [SerializeField] private ParticleSystem _deathParticle;
-    [SerializeField] private ParticleSystem _runParticle;
-    [SerializeField] private bool _canMove;
+    [SerializeField] private bool _checkInputs;
     private CharacterMover _CharacterMover;
-    private Animator _playerAnimator;
-    private Rigidbody2D _rigidbody2D;
     private CoinStash _coinStash;
-    private SpriteBlink _spriteBlink;
+    private PlayerAnimation _playerAnimation;
+    private PlayerInvincible _playerInvincible;
+    private DeathParticle _deathParticle;
+    private RunParticle _runParticle;
     private float _horizontalMove;
     private bool _isJump;
     private bool _isInvincible;
     private Timer _timer;
     private FinishFlag _finishFlag;
-    private SpriteRenderer _spriteRenderer;
     private LevelLoader _levelLoader;
 
-    public bool IsInvincible => _isInvincible;
+    public bool IsInvincible
+    {
+        get
+        {
+            return _isInvincible;
+        }
+
+        set
+        {
+            _isInvincible = value;
+        }
+    }
+    public bool CheckInputs
+    {
+        get
+        {
+            return _checkInputs;
+        }
+
+        set
+        {
+            _checkInputs = value;
+        }
+    }
 
     public UnityEvent Hitted;
-    public UnityEvent CoinPicked;
 
     private void Awake()
     {
@@ -34,16 +52,12 @@ public class Player : MonoBehaviour
         {
             Hitted = new UnityEvent();
         }
-        if (CoinPicked == null)
-        {
-            CoinPicked = new UnityEvent();
-        }
         _CharacterMover = GetComponent<CharacterMover>();
-        _playerAnimator = GetComponent<Animator>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteBlink = GetComponent<SpriteBlink>();
+        _playerAnimation = GetComponent<PlayerAnimation>();
+        _playerInvincible = GetComponent<PlayerInvincible>();
         _coinStash = GetComponent<CoinStash>();
+        _deathParticle = FindObjectOfType<DeathParticle>();
+        _runParticle = FindObjectOfType<RunParticle>();
         _timer = FindObjectOfType<Timer>();
         _finishFlag = FindObjectOfType<FinishFlag>();
         _levelLoader = FindObjectOfType<LevelLoader>();
@@ -51,7 +65,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _playerAnimator.SetBool("Grounded", true);
+        _playerAnimation.SetGrounded(true);
     }
 
     public void OnEnable()
@@ -72,16 +86,11 @@ public class Player : MonoBehaviour
 
     public void OnLand()
     {
-        _playerAnimator.SetBool("Grounded", true);
+        _playerAnimation.SetGrounded(true);
         if (_isInvincible)
         {
-            _canMove = true;
+            _checkInputs = true;
         }
-    }
-
-    public void OnCoinPick()
-    {
-        CoinPicked.Invoke();
     }
 
     public void TakeDamage()
@@ -93,11 +102,9 @@ public class Player : MonoBehaviour
                 OnDied();
             }
             _CharacterMover.RemoveVelocity();
-            _rigidbody2D.AddForce(new Vector2(-_horizontalMove * _damageForce, _damageForce));
+            _CharacterMover.KnockBack(_horizontalMove);
             _coinStash.DropCoins(CoinStash.Count.Half);
-            _isInvincible = true;
-            StartCoroutine(Invincible());
-            _canMove = false;
+            _playerInvincible.StartInvincible();
             Hitted.Invoke();
         }
     }
@@ -109,7 +116,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        CheckInputs();
+        CheckPlayerInputs();
     }
 
     private void FixedUpdate()
@@ -123,11 +130,11 @@ public class Player : MonoBehaviour
     {
         if (_horizontalMove != 0)
         {
-            _playerAnimator.SetBool("Running", true);
+            _playerAnimation.SetRunning(true);
         }
         else
         {
-            _playerAnimator.SetBool("Running", false);
+            _playerAnimation.SetRunning(false);
         }
     }
 
@@ -135,13 +142,13 @@ public class Player : MonoBehaviour
     {
         if (!_CharacterMover.IsGrounded)
         {
-            _playerAnimator.SetBool("Grounded", false);
+            _playerAnimation.SetGrounded(false);
         }
     }
 
-    private void CheckInputs()
+    private void CheckPlayerInputs()
     {
-        if (_canMove)
+        if (_checkInputs)
         {
             _horizontalMove = Input.GetAxis("Horizontal");
             if (Input.GetButtonDown("Jump"))
@@ -159,24 +166,13 @@ public class Player : MonoBehaviour
 
     private void OnDied()
     {
-        _deathParticle.Play();
-        _runParticle.Stop();
-        _spriteRenderer.enabled = false;
+        _deathParticle.PlayParticle();
+        _runParticle.StopParticle();
         _levelLoader.RestartLevel();
     }
 
     private void OnLevelComplete()
     {
         enabled = false;
-    }
-
-    private IEnumerator Invincible()
-    {
-        WaitForSeconds waitTime = new WaitForSeconds(_invincibleTime);
-        _spriteBlink.enabled = true;
-        yield return waitTime;
-        _isInvincible = false;
-        _spriteBlink.enabled = false;
-        _canMove = true;
     }
 }

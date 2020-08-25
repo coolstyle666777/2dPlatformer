@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
+[RequireComponent(typeof(PostProcessVolume))]
 public class PostProcess : MonoBehaviour
 {
     [SerializeField] private float _saturationTime;
@@ -10,6 +9,7 @@ public class PostProcess : MonoBehaviour
     private PostProcessVolume _postProcessVolume;
     private ColorGrading _colorGrading;
     private float _normalSaturationValue;
+
     private void Awake()
     {
         _timer = FindObjectOfType<Timer>();
@@ -20,6 +20,7 @@ public class PostProcess : MonoBehaviour
     private void Start()
     {
         _normalSaturationValue = _colorGrading.saturation.value;
+        _postProcessVolume.enabled = GameDataWriter.GameData.PostProcess;
     }
 
     public void OnEnable()
@@ -40,7 +41,6 @@ public class PostProcess : MonoBehaviour
 
     private void Update()
     {
-        EnableCheck();
         if (_timer != null)
         {
             if (_timer.CurrentTime < _saturationTime)
@@ -48,11 +48,6 @@ public class PostProcess : MonoBehaviour
                 _colorGrading.saturation.value = Mathf.Lerp(-100, _normalSaturationValue, _timer.CurrentTime / _saturationTime);
             }
         }
-    }
-
-    private void EnableCheck()
-    {
-        _postProcessVolume.enabled = GameDataWriter.GameData.PostProcess;
     }
 
     private void ResetTimeOver()

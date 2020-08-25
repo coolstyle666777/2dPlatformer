@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SpriteBlink : MonoBehaviour //Как работать с двумя классами с одной логикой в скрипте(Дженерик,интерфейс?)
+[RequireComponent(typeof(SpriteRenderer))]
+public class SpriteBlink : MonoBehaviour
 {
     [SerializeField] private float _fadeRate;
     private SpriteRenderer _sprite;

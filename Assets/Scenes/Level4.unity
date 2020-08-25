@@ -51890,6 +51890,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 366635756}
     m_Modifications:
+    - target: {fileID: 114535446001342770, guid: 0967433e2ad447d4b87e98e0061ecedc,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224797031230993826, guid: 0967433e2ad447d4b87e98e0061ecedc,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -52154,6 +52159,31 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114535446001342770, guid: 0967433e2ad447d4b87e98e0061ecedc,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114535446001342770, guid: 0967433e2ad447d4b87e98e0061ecedc,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114535446001342770, guid: 0967433e2ad447d4b87e98e0061ecedc,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2106660615}
+    - target: {fileID: 114535446001342770, guid: 0967433e2ad447d4b87e98e0061ecedc,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 114535446001342770, guid: 0967433e2ad447d4b87e98e0061ecedc,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0967433e2ad447d4b87e98e0061ecedc, type: 2}
@@ -52426,6 +52456,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3acb5f3f6b1c124198a8cd2a8354590, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &2106660615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114041731116886496, guid: a3acb5f3f6b1c124198a8cd2a8354590,
+    type: 2}
+  m_PrefabInternal: {fileID: 2106660614}
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
 --- !u!1001 &2109747716
 Prefab:
   m_ObjectHideFlags: 0

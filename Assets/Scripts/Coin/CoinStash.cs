@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class CoinStash : MonoBehaviour
 {
@@ -13,15 +14,31 @@ public class CoinStash : MonoBehaviour
 
     public int Amount => _amount;
 
+    public UnityEvent CoinsDroped;
+    public UnityEvent CoinPicked;
+
     public enum Count
     {
         Half,
         All
     }
 
+    private void Awake()
+    {
+        if (CoinsDroped == null)
+        {
+            CoinsDroped = new UnityEvent();
+        }
+        if (CoinPicked == null)
+        {
+            CoinPicked = new UnityEvent();
+        }
+    }
+
     public void AddCoin()
     {
         _amount++;
+        CoinPicked.Invoke();
     }
 
     public void DropCoins(Count count)
@@ -43,5 +60,6 @@ public class CoinStash : MonoBehaviour
             rigidCoin.AddForce(_dropPosition * _coinDropForce);
         }
         _amount = 0;
+        CoinsDroped.Invoke();
     }
 }

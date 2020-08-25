@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteBlink))]
 public class Coin : MonoBehaviour
 {
     private SpriteBlink _spriteBlink;
@@ -17,7 +18,6 @@ public class Coin : MonoBehaviour
         if (player != null && !player.IsInvincible)
         {
             coinStash.AddCoin();
-            player.OnCoinPick();
             Destroy(gameObject);
         }
     }

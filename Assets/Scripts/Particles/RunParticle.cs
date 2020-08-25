@@ -1,23 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(ParticleSystem))]
 public class RunParticle : MonoBehaviour
 {
     [SerializeField] private float _enableSpeed;
     private ParticleSystem _particleSystem;
     private CharacterMover _characterMover;
 
-    public void Awake()
+    private void Awake()
     {
         _particleSystem = GetComponent<ParticleSystem>();
         _characterMover = GetComponentInParent<CharacterMover>();
     }
 
-    public void Update()
+    private void Update()
     {
         FlipSide();
         SpeedControl();
+    }
+
+    public void StopParticle()
+    {
+        _particleSystem.Stop();
     }
 
     private void FlipSide()

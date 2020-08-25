@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class CoinText : MonoBehaviour
 {
     private TextMeshProUGUI _coinText;
@@ -14,7 +13,7 @@ public class CoinText : MonoBehaviour
         _coinText = GetComponent<TextMeshProUGUI>();
     }
 
-    public void SetCoinText()
+    public void UpdateCoinText()
     {
         _coinText.text = _player.GetComponent<CoinStash>().Amount.ToString();
     }

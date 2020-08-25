@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private float _jumpForce = 400f;
+    [SerializeField] private float _damageForce = 400f;
     [SerializeField] private float _moveSpeed = 10f;
     [Range(0, 1f)] [SerializeField] private float _movementSmoothing = .05f;
     [SerializeField] private LayerMask _whatIsGround;
@@ -62,6 +63,11 @@ public class CharacterMover : MonoBehaviour
     public void RemoveVelocity()
     {
         _rigidbody2D.velocity = Vector3.zero;
+    }
+
+    public void KnockBack(float horizontalMove)
+    {
+        _rigidbody2D.AddForce(new Vector2(-horizontalMove * _damageForce, _damageForce));
     }
 
     private void Jump()

@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class FinishPanel : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _hiscoreText;
@@ -13,7 +11,7 @@ public class FinishPanel : MonoBehaviour
     private MenuPanel _menuPanel;
     private LevelLoader _levelLoader;
     private Timer _timer;
-    
+
     public void Awake()
     {
         _nextLevel = FindObjectOfType<FinishFlag>().NextLevel;
@@ -41,7 +39,7 @@ public class FinishPanel : MonoBehaviour
 
     public void OnNextLevelButtonClick()
     {
-        _levelLoader.LoadLevel(_nextLevel+2);
+        _levelLoader.LoadLevel(_nextLevel + 2);
     }
 
     public void OnLevelRestartButtonClick()

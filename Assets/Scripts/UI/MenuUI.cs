@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class MenuUI : MonoBehaviour
 {
@@ -20,7 +17,8 @@ public class MenuUI : MonoBehaviour
         if (GameDataWriter.GameData.LevelUnlock[1])
         {
             _levelLoader.LoadLevel(1);
-        } else
+        }
+        else
         {
             _levelLoader.LoadLevel(2);
         }
