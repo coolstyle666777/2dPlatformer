@@ -234,6 +234,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8048921aedf36db488b079eea8198749, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &53856511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114021591568572418, guid: 8048921aedf36db488b079eea8198749,
+    type: 2}
+  m_PrefabInternal: {fileID: 53856510}
+  m_Script: {fileID: 11500000, guid: 3108f1054d9e2fa47a1d61d2ae9259e5, type: 3}
 --- !u!114 &210028164 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114156225644853222, guid: 16d1df5d22bb7184e9541bf1e2c0a1ed,
@@ -283,6 +289,16 @@ Prefab:
         type: 2}
       propertyPath: _canMove
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114741119239562710, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: Death.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 53856511}
+    - target: {fileID: 114741119239562710, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: Death.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: RestartLevel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a5a6b14454bec42886862fdccb8318, type: 2}

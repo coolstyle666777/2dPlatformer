@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     private CoinStash _coinStash;
     private PlayerAnimation _playerAnimation;
     private PlayerInvincible _playerInvincible;
-    private DeathParticle _deathParticle;
     private RunParticle _runParticle;
     private float _horizontalMove;
     private bool _isJump;
@@ -45,6 +44,7 @@ public class Player : MonoBehaviour
     }
 
     public UnityEvent Hitted;
+    public UnityEvent Death;
 
     private void Awake()
     {
@@ -52,11 +52,14 @@ public class Player : MonoBehaviour
         {
             Hitted = new UnityEvent();
         }
+        if (Death == null)
+        {
+            Death = new UnityEvent();
+        }
         _CharacterMover = GetComponent<CharacterMover>();
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerInvincible = GetComponent<PlayerInvincible>();
         _coinStash = GetComponent<CoinStash>();
-        _deathParticle = FindObjectOfType<DeathParticle>();
         _runParticle = FindObjectOfType<RunParticle>();
         _timer = FindObjectOfType<Timer>();
         _finishFlag = FindObjectOfType<FinishFlag>();
@@ -99,7 +102,7 @@ public class Player : MonoBehaviour
         {
             if (_coinStash.Amount == 0)
             {
-                OnDied();
+                Death.Invoke();
             }
             _CharacterMover.RemoveVelocity();
             _CharacterMover.KnockBack(_horizontalMove);
@@ -166,9 +169,7 @@ public class Player : MonoBehaviour
 
     private void OnDied()
     {
-        _deathParticle.PlayParticle();
-        _runParticle.StopParticle();
-        _levelLoader.RestartLevel();
+        Death.Invoke();
     }
 
     private void OnLevelComplete()

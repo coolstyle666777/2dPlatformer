@@ -839,6 +839,36 @@ Prefab:
       propertyPath: _canMove
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114741119239562710, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: Death.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1512367493}
+    - target: {fileID: 114741119239562710, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: Death.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607353478199814, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: CoinsDroped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2060574706}
+    - target: {fileID: 114607353478199814, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: CoinsDroped.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateCoinText
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607353478199814, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: CoinPicked.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2060574706}
+    - target: {fileID: 114607353478199814, guid: 47a5a6b14454bec42886862fdccb8318,
+        type: 2}
+      propertyPath: CoinPicked.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateCoinText
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a5a6b14454bec42886862fdccb8318, type: 2}
   m_IsPrefabAsset: 0
@@ -49781,6 +49811,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8048921aedf36db488b079eea8198749, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1512367493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114021591568572418, guid: 8048921aedf36db488b079eea8198749,
+    type: 2}
+  m_PrefabInternal: {fileID: 1512367492}
+  m_Script: {fileID: 11500000, guid: 3108f1054d9e2fa47a1d61d2ae9259e5, type: 3}
 --- !u!4 &1515905385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4911825102324788, guid: b0515605903395e4f97d625c03da04d0,

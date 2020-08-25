@@ -169,9 +169,8 @@ GameObject:
   - component: {fileID: 4533508461107938}
   - component: {fileID: 198447461728457400}
   - component: {fileID: 199057823682380524}
-  - component: {fileID: 114131176032216106}
   m_Layer: 0
-  m_Name: MagicPoof
+  m_Name: DeathParticle
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,17 +854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0ff725ecba4654084c50b3f0fb88b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114131176032216106
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1586663219380200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e144d060015fb6348b606a91a7102120, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114420968990805234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -961,14 +949,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7744ef5e453b1d40871e4baf0084e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathParticle: {fileID: 0}
-  _runParticle: {fileID: 0}
   _checkInputs: 1
   Hitted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82206175066410126}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Death:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 198447461728457400}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 198399511714453728}
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
